@@ -6,7 +6,7 @@ namespace FinancasFacil
     public partial class MainPage : ContentPage
     {
         int count = 0;
-        private readonly BaseClient _client = new BaseClient();
+       
         public MainPage()
         {
             InitializeComponent();
@@ -15,13 +15,11 @@ namespace FinancasFacil
         private async void CliqueBuscarInformacoes(object sender, EventArgs e)
         {
             string simboloAcao = campoSimbolo.Text;
+
             
-            HttpResponseMessage respostaAPI = await _client.GetShare(simboloAcao);
-            string conteudo = await respostaAPI.Content.ReadAsStringAsync();
-            Acao acao = JsonConvert.DeserializeObject<Acao>(conteudo);
+            NewPage1 newPage = new NewPage1(simboloAcao);
 
-            BuscarInformacoes.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
-
+            await Navigation.PushAsync(newPage);
             SemanticScreenReader.Announce(BuscarInformacoes.Text);
         }
     }
