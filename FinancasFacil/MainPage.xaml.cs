@@ -6,7 +6,7 @@ namespace FinancasFacil
     public partial class MainPage : ContentPage
     {
         int count = 0;
-       
+
         public MainPage()
         {
             InitializeComponent();
@@ -15,11 +15,8 @@ namespace FinancasFacil
         private async void CliqueBuscarInformacoes(object sender, EventArgs e)
         {
             string simboloAcao = campoSimbolo.Text;
-
-            
-            NewPage1 newPage = new NewPage1(simboloAcao);
-
-            await Navigation.PushAsync(newPage);
+            ShareDetails shareDetails = new ShareDetails(simboloAcao);
+            await Navigation.PushAsync(shareDetails);
             SemanticScreenReader.Announce(BuscarInformacoes.Text);
         }
     }
