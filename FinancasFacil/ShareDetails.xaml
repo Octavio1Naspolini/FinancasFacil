@@ -3,45 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FinancasFacil.ShareDetails"
              Title="ShareDetails">
-    <ScrollView>
-        <VerticalStackLayout
-        Padding="30,0"
-        Spacing="25">
-            <Image
+    <VerticalStackLayout>
+        <Image
+            x:Name="Logotipo"
             Source="logo.jpg"
             HeightRequest="185"
             Aspect="AspectFit"
             SemanticProperties.Description="dot net bot in a race car number eight" />
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-                <Label x:Name="Produto1" Grid.Row="0" Grid.Column="0" Text="Produto: " />
-                <Label Grid.Row="0" Grid.Column="1" Text="Playstation 5" />
-                <Label x:Name="Preço1" Grid.Row="0" Grid.Column="2" Text="Preço: " />
-                <Label Grid.Row="0" Grid.Column="3" Text="R$ 3.781,00" />
+            <Label Grid.Row="0" Grid.Column="0"  x:Name="Produto1"></Label>
+            <Label Grid.Row="0" Grid.Column="1" Text="Playstation 5"></Label>
 
-                <Label x:Name="Produto2" Grid.Row="1" Grid.Column="0" Text="Produto: " />
-                <Label Grid.Row="1" Grid.Column="1" Text="Xbox Series S" />
-                <Label x:Name="Preço2" Grid.Row="1" Grid.Column="2" Text="Preço: " />
-                <Label Grid.Row="1" Grid.Column="3" Text="R$ 2.192,00" />
+            <Label Grid.Row="0" Grid.Column="2"  x:Name="Preco1"></Label>
+            <Label Grid.Row="0" Grid.Column="3" Text="R$ 3781"></Label>
 
-                <Label x:Name="Produto3" Grid.Row="2" Grid.Column="0" Text="Produto: " />
-                <Label Grid.Row="2" Grid.Column="1" Text="Xbox Series X" />
-                <Label x:Name="Preço3" Grid.Row="2" Grid.Column="2" Text="Preço: " />
-                <Label Grid.Row="2" Grid.Column="3" Text="R$ 3.722,00" />
-            </Grid>
-        </VerticalStackLayout>
-    </ScrollView>
+            <Label Grid.Row="1" Grid.Column="0"  x:Name="Produto2"></Label>
+            <Label Grid.Row="1" Grid.Column="1" Text="Xbox Series s"></Label>
+
+            <Label Grid.Row="1" Grid.Column="2"  x:Name="Preco2"></Label>
+            <Label Grid.Row="1" Grid.Column="3" Text="R$ 2192"></Label>
+
+            <Label Grid.Row="2" Grid.Column="0"  x:Name="Produto3"></Label>
+            <Label Grid.Row="2" Grid.Column="1" Text="Xbox Series X"></Label>
+
+            <Label Grid.Row="2" Grid.Column="2"  x:Name="Preco3"></Label>
+            <Label Grid.Row="2" Grid.Column="3" Text="R$ 3722"></Label>
+        </Grid>
+    </VerticalStackLayout>
 </ContentPage>

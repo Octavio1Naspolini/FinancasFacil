@@ -5,32 +5,41 @@ namespace FinancasFacil;
 
 public partial class ShareDetails : ContentPage
 {
+    private string _shareSymbol;
     private readonly BaseClient _client = new BaseClient();
-    private string _simboloAcao;
-    public ShareDetails(string simboloAcao)
+
+    public ShareDetails(string shareSymbol)
     {
         InitializeComponent();
-        _simboloAcao = simboloAcao;
-        CarregarDados();
-
-
-
+        _shareSymbol = shareSymbol;
+        ShowShareDetails(_shareSymbol);
     }
 
-    private async void CarregarDados()
+    public async Task ShowShareDetails(string shareSymbol)
     {
-        HttpResponseMessage respostaAPI = await _client.GetShare(_simboloAcao);
-        string conteudo = await respostaAPI.Content.ReadAsStringAsync();
-        Acao acao = JsonConvert.DeserializeObject<Acao>(conteudo);
+        try
+        {
+            HttpResponseMessage respostaAPI = await _client.GetShare(shareSymbol);
+            string conteudo = await respostaAPI.Content.ReadAsStringAsync();
+            Acao acao = JsonConvert.DeserializeObject<Acao>(conteudo);
 
-        Produto1.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
-        Preço1.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
-        Produto2.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
-        Preço2.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
-        Produto3.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
-        Preço3.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
-        await DisplayAlert("Alerta", "Voce clicou no botao", "ON");
-
-
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                Logotipo.Source = acao.Logourl;
+                Produto1.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
+                Preco1.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
+                Produto2.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
+                Preco2.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
+                Produto3.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
+                Preco3.Text = $"{acao.ShortName} Valor: {acao.RegularMarketPrice}";
+            });
+        }
+        catch (Exception ex)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await DisplayAlert("Alerta", "Voce clicou no botao", "OK");
+            });
+        }
     }
 }
